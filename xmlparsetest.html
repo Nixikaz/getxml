@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="wgxpath.install.js">
+    </script>
+
+</head>
+<body>
+        <p id="demo0"></p>
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+        <p id="demo3"></p>
+        <p id="demo4"></p>
+        <p id="demo5"></p>
+<script type='text/javascript'>
+const stageArray = ["HV-FRF2", "HV4-ASSY-B", "HV5-BBOND1",
+                    "HV5-ASSY-F", "HV-FSBOND1", "HV6QX-INI",
+                    "HV6QX-PBI", "HV-CLEAN", "HV-ENCAPQC", 
+                    "HV-ENCAP2", "HV-SOLDER", "HV5-LIDTAC",
+                    "HV6QX-FIN", "HV-UNDERFL", "HV-ROUTER",
+                    "HV-FINQC", "HV-FINLQC"];
+var txt = "";
+
+function arrayLoop(array) {
+    for (let i = 0; i < array.length; i++) {
+        let loopVar = array[i];
+        docuemnt.getElementById(`demo${})
+    }
+}
+
+arrayLoop(stageArray);
+
+
+
+
+// stageArray.forEach(str => {        
+//         if (str == stageArray[i]) {
+//             document.getElementById("demo" + i).innerHTML = str;
+//         } else if (str == stageArray[1]) {
+//             document.getElementById("demo2").innerHTML = str;
+//         } else if (str == stageArray[2]) {
+//             document.getElementById("demo3").innerHTML = str;
+//         } else if (str == stageArray[3]) {
+//             document.getElementById("demo4").innerHTML = str;
+//         } else if (str == stageArray[4]) {
+//             document.getElementById("demo5").innerHTML = str;
+//         }        
+// });
+
+// wgxpath.install();
+// // var xmlString = '<form><name>test</name></form>';
+// var requestURL = 'EfficiencyDashboard.xml'
+// var xhttp = new XMLHttpRequest();
+// xhttp.open('GET', requestURL, true);
+// xhttp.send();
+// xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//         showResult(xhttp.responseXML);
+//     }
+// };
+
+// function showResult(xml) {
+//     var txt = "";
+//     path = "/NewDataSet/Table/STAGE"
+//     if (xml.evaluate) {
+//         var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
+//         var result = nodes.iterateNext();
+//         while (result) {
+//             txt += result.childNodes[0].nodeValue + "<br>";
+//             result = nodes.iterateNext();
+//         }
+//     }
+//     document.getElementById("demo").innerHTML = txt;
+// }
+
+// var doc = new DOMParser().parseFro(xmlString, 'text/xml');
+// var result = doc.evaluate('/form/name', doc, null, XPathResult.STRING_TYPE, null);
+// console.log(result.stringValue);
+
+</script>
+</body>
+</html>
