@@ -1,34 +1,81 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="wgxpath.install.js">
-    </script>
 
 </head>
+
 <body>
-        <p id="demo0"></p>
-        <p id="demo1"></p>
-        <p id="demo2"></p>
-        <p id="demo3"></p>
-        <p id="demo4"></p>
-        <p id="demo5"></p>
-<script type='text/javascript'>
-const stageArray = ["HV-FRF2", "HV4-ASSY-B", "HV5-BBOND1",
-                    "HV5-ASSY-F", "HV-FSBOND1", "HV6QX-INI",
-                    "HV6QX-PBI", "HV-CLEAN", "HV-ENCAPQC", 
-                    "HV-ENCAP2", "HV-SOLDER", "HV5-LIDTAC",
-                    "HV6QX-FIN", "HV-UNDERFL", "HV-ROUTER",
-                    "HV-FINQC", "HV-FINLQC"];
-var txt = "";
+    <p id="HV-FRF2"></p>
+    <p id="HV4-ASSY-B"></p>
+    <p id="HV5-BBOND1"></p>
+    <p id="HV5-ASSY-F"></p>
+    <p id="demo5">asdfas</p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <p id="demo12"></p>
+    <p id="demo13"></p>
+    <p id="demo14"></p>
+    <p id="demo15"></p>
+    <p id="demo16"></p>
+    <p id="demo17"></p>
+    <script type='text/javascript'>
+        const stageArray = ["HV-FRF2", "HV4-ASSY-B", "HV5-BBOND1",
+            "HV5-ASSY-F", "HV-FSBOND1", "HV6QX-INI", "HV6QX-PBI", 
+            "HV-CLEAN", "HV-ENCAPQC", "HV-ENCAP2", "HV-SOLDER", 
+            "HV5-LIDTAC", "HV6QX-FIN", "HV-UNDERFL", "HV-ROUTER",
+            "HV-FINQC", "HV-FINLQC"];
+        var txt = "";
+        function xRequest(stage, url) {
+            xhttp = false;
 
-function arrayLoop(array) {
-    for (let i = 0; i < array.length; i++) {
-        let loopVar = array[i];
-        docuemnt.getElementById(`demo${})
-    }
-}
+            xhttp = new XMLHttpRequest();
 
-arrayLoop(stageArray);
+            if (!xhttp) {
+                alert('Cannot create an XMLHTTP instance');
+                return false;
+            }
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    getXml(stage, this);
+                }
+            };
+            xhttp.open('GET', url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
+            xhttp.send(null);
+        }
+
+        function getXml(stage, xml) {
+            var xmldoc = xml.responseXML;
+            var partCount = 0;
+            var stageNode = xmldoc.getElementsByTagName('stage');
+            for (let i = 0; i < stageNode.length; i++) {
+                let stageTextContent = stageNode[i].childNodes[0].textContent;
+                if (stageTextContent === stage) {
+                    partCount++;
+                    
+                }
+                console.log(partCount);
+                // console.log(stageTextContent);
+                // document.getElementById(stageTextContent).innerHTML = partCount;
+            }
+
+        }
+
+        function arrayLoop(array) {
+            for (let i = 0; i < array.length; i++) {
+                let loopVar = array[i];
+                return loopVar;
+                // console.log(loopVar);        
+                // Below should be changed to appendChild or change text or whatever it takes to change HTML
+                // document.getElementById(loopVar).innerHTML = loopVar; 
+                }
+            }
+        console.log(xRequest(arrayLoop(stageArray), 'test.xml'));
+// arrayLoop(stageArray);
 
 
 
@@ -77,6 +124,7 @@ arrayLoop(stageArray);
 // var result = doc.evaluate('/form/name', doc, null, XPathResult.STRING_TYPE, null);
 // console.log(result.stringValue);
 
-</script>
+    </script>
 </body>
+
 </html>
