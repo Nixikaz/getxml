@@ -16,7 +16,7 @@
 <body>
     <div class="container-fluid text-center h1bg"><h1 class="display-2 text-white">Equipment Dashboard</h1>
     
-    <button id="ajaxButton" type="button" onclick="getStage">Update Totals</button>     
+    <!-- <button id="ajaxButton" type="button" onclick="getStage">Update Totals</button>      -->
     </div><br />
     <div class="container-fluid text-muted">
         <div class="row p-2">
@@ -30,7 +30,7 @@
                     <tbody>
                         <tr>
                             <th class="w-50 p-1 text-right align-middle">Plan</th>
-                            <td class="w-50 p-1 text-center align-middle">0</td>
+                            <td class="w-50 p-1 text-center align-middle" id="HV-FRF2Plan">0</td>
                         </tr>
                         <tr>
                             <th class="w-50 p-1 text-right align-middle">Actual</th>
@@ -38,11 +38,11 @@
                         </tr>
                         <tr>
                             <th class="w-50 p-1 text-right align-middle">% Eff</th>
-                            <td class="w-50 p-1 text-center align-middle">0</td>
+                            <td class="w-50 p-1 text-center align-middle" id="HV-FRF2Eff">0</td>
                         </tr>
                         <tr>
                             <th class="w-50 p-1 text-right align-middle">Rejects</th>
-                            <td class="w-50 p-1 text-center align-middle">0</td>
+                            <td class="w-50 p-1 text-center align-middle" id="HV-FRF2Rejects" >0</td>
                         </tr>
                     </tbody>
                 </table>
