@@ -6,7 +6,7 @@ const stageArray = ["HV-FRF2", "HV4-ASSY-B", "HV5-BBOND1",
                     "HV-ENCAP2", "HV-SOLDER", "HV5-LIDTAC",
                     "HV6QX-FIN", "HV-UNDERFL", "HV-ROUTER",
                     "HV-FINQC", "HV-FINLQC"]
-function xRequest(stage, url) {
+function xRequest(stage, part, url) {
     xhttp = false;
 
     xhttp = new XMLHttpRequest();
@@ -17,22 +17,24 @@ function xRequest(stage, url) {
     }
     xhttp.onload = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            getXml(stage, this);
+            getXml(stage, part, this);
         }
     };
     xhttp.open('GET', url + ((/\?/).test(url) ? "&" : "?") + (new Date()).getTime(), true);
     xhttp.send(null);
 }
-var plan = 600;
+var plan = 200;
 document.getElementById(stageArray[0] + "Plan").innerHTML = plan;
-function getXml(stage, xml) {
+function getXml(stage, part, xml) {
     var xmldoc = xml.responseXML;
     var partCount = 0;   
     stageNode = xmldoc.getElementsByTagName("STAGE");
+    partNode = xmldoc.getElementsByTagName("PARTNAME");
     reworkNode = xmldoc.getElementsByTagName("REWORKCODES");
     for (let i = 0; i < stageNode.length; i++) {
         let stageNodeValue = stageNode[i].childNodes[0].textContent;
-        if (/*reworkNodeValue && */stageNodeValue === stage) { 
+        let partNodeValue = partNode[i].childNodes[0].textContent;
+        if (partNodeValue === part && stageNodeValue === stage) { 
             partCount++;            
         }
     }  
@@ -58,4 +60,4 @@ function countReworkCodes(stage, nodeArg) {
 }
 
 
-xRequest(stageArray[0], 'EfficiencyDashboard.xml');
+xRequest(stageArray[0], '100088507', 'EfficiencyDashboard.xml');
